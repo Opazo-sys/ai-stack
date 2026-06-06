@@ -1,6 +1,6 @@
 # 🤖 Self-Hosted AI Stack
 
-Private AI assistant running on a Hostinger VPS.
+Assistente de I.A Privada.
 
 ## Stack
 - **Ollama** — LLM runtime (installed on host)
