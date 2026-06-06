@@ -1,0 +1,32 @@
+services:
+  searxng:
+    image: searxng/searxng
+    container_name: searxng
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./searxng:/etc/searxng
+      - searxng-cache:/var/cache/searxng
+
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:main
+    container_name: open-webui
+    restart: always
+    ports:
+      - "3000:8080"
+    volumes:
+      - open-webui:/app/backend/data
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    environment:
+      - OLLAMA_BASE_URL=http://host.docker.internal:11434
+      - SCARF_NO_ANALYTICS=true
+      - DO_NOT_TRACK=true
+      - ANONYMIZED_TELEMETRY=false
+    depends_on:
+      - searxng
+
+volumes:
+  searxng-cache:
+  open-webui:
