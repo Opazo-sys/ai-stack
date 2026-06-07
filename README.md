@@ -4,8 +4,8 @@ Assistente de I.A Privada.
 
 ## Stack
 - **Ollama** — LLM runtime (installed on host)
-- **Open WebUI** — Chat interface (Docker, port 3000)
-- **SearXNG** — Private web search (Docker, port 8080)
+- **Open WebUI** — Chat interface (Docker, port ****)
+- **SearXNG** — Private web search (Docker, port ****)
 
 ## Setup
 
@@ -25,5 +25,5 @@ docker compose up -d
 ```
 
 ## Access
-- Open WebUI: `http://YOUR_VPS_IP:3000`
-- SearXNG: `http://YOUR_VPS_IP:8080`
+- Open WebUI: `http://YOUR_VPS_IP:****`
+- SearXNG: `http://YOUR_VPS_IP:****`
