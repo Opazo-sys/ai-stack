@@ -92,4 +92,4 @@ docker compose up -d
 
 ## Licença
 
-MIT — faz o que quiser, só não me culpa se quebrar algo em produção.
+MIT
