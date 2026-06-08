@@ -1,3 +1,8 @@
 .env
+ollama_data/
+webui_data/
+certbot_certs/
+certbot_www/
 *.log
-data/
+.DS_Store
+Thumbs.db
