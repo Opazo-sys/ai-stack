@@ -4,7 +4,7 @@ Esse projeto nasceu de uma ideia simples: por que pagar por uma IA quando dá pr
 
 Sou o Opazo, estou iniciando minha carreira em infra/sysadmin e resolvi usar esse projeto pra me aprofundar em tecnologias que já uso no dia a dia como Docker, Linux, VPS... Vi outras pessoas fazendo isso, me interessei e fui atrás.
 
-O resultado é esse stack aqui: uma IA pessoal, rodando no meu próprio servidor, sem depender de API de ninguém.
+O resultado é esse stack aqui: IA totalmente self-hosted, executada em uma VPS própria e sem dependência de APIs externas.
 
 ---
 
