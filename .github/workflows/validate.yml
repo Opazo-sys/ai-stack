@@ -1,0 +1,20 @@
+name: Validate Stack
+on:
+  push:
+    branches: [ main ]
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate docker-compose.yml
+        run: docker compose config --quiet
+        env:
+          DOMAIN: example.com
+          EMAIL: test@example.com
+      - name: Check required files
+        run: |
+          test -f docker-compose.yml && echo "✅ docker-compose.yml"
+          test -f nginx/default.conf && echo "✅ nginx/default.conf"
+          test -f .env.example       && echo "✅ .env.example"
+          test -f setup.sh           && echo "✅ setup.sh"
