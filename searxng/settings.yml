@@ -12,7 +12,6 @@ search:
     - json
 
 server:
-<<<<<<< Updated upstream
   # Is overwritten by ${SEARXNG_PORT} and ${SEARXNG_BIND_ADDRESS}
   port: 8888
   bind_address: "127.0.0.1"
@@ -29,15 +28,8 @@ server:
   # If your instance owns a /etc/searxng/settings.yml file, then set the following
   # values there.
 
-  secret_key: "${SEARXNG_SECRET}"  # Is overwritten by ${SEARXNG_SECRET}
-  # Proxy image results through SearXNG. Is overwritten by ${SEARXNG_IMAGE_PROXY}
-  image_proxy: false
-  # 1.0 and 1.1 are supported
-  http_protocol_version: "1.0"
-  # POST queries are "more secure!" but are also the source of hard-to-locate
-  # annoyances, which is why GET may be better for end users and their browsers.
-  # see https://github.com/searxng/searxng/pull/3619
-  # Is overwritten by ${SEARXNG_METHOD}
+secret_key: "${SEARXNG_SECRET}"
+  image_proxy: true
   method: "POST"
   default_http_headers:
     X-Content-Type-Options: nosniff
@@ -46,15 +38,11 @@ server:
     Referrer-Policy: no-referrer
 
 valkey:
-  # URL to connect valkey database. Is overwritten by ${SEARXNG_VALKEY_URL}.
-  # https://docs.searxng.org/admin/settings/settings_valkey.html#settings-valkey
-  # url: valkey://localhost:6379/0
-  url: false
-=======
-  secret_key: "${SEARXNG_SECRET}"
-  limiter: limiter: "${SEARXNG_LIMITER}"
+  url: false # Change it to valkey://valkey:6379/0 if you are going to enable the valkey container
+
+secret_key: "${SEARXNG_SECRET}"
+  limiter: "${SEARXNG_LIMITER}"
   image_proxy: true
->>>>>>> Stashed changes
 
 ui:
   default_theme: simple
