@@ -13,6 +13,8 @@ services:
     depends_on:
       - open-webui
       - searxng
+    networks:
+      - ai-frontend # Apenas na zona pública/fronteira
 
   searxng:
     image: searxng/searxng
@@ -26,9 +28,12 @@ services:
     environment:
       - SEARXNG_SECRET=${SEARXNG_SECRET}
       - SEARXNG_LIMITER=${SEARXNG_LIMITER}
-      - SEARXNG_VALKEY_URL=${SEARXNG_VALKEY_URL}
+      - SEARXNG_VALKEY_URL=valkey://valkey:6379/0
     depends_on:
       - valkey
+    networks:
+      - ai-frontend # Para receber tráfego do Nginx
+      - ai-backend  # Para conversar com o Valkey
 
   valkey:
     image: valkey/valkey:alpine
@@ -36,8 +41,9 @@ services:
     restart: unless-stopped
     expose:
       - "6379"
+    networks:
+      - ai-backend # Isolado no backend
 
-  # New service from Ollama
   ollama:
     image: ollama/ollama:latest
     container_name: ollama
@@ -46,6 +52,8 @@ services:
       - "11434"
     volumes:
       - ollama-data:/root/.ollama
+    networks:
+      - ai-backend # Isolado no backend
 
   open-webui:
     image: ghcr.io/open-webui/open-webui:main
@@ -56,7 +64,6 @@ services:
     volumes:
       - open-webui:/app/backend/data
     environment:
-      # Pointing to the Ollama container name on the internal network
       - OLLAMA_BASE_URL=http://ollama:11434
       - SCARF_NO_ANALYTICS=true
       - DO_NOT_TRACK=true
@@ -64,8 +71,19 @@ services:
     depends_on:
       - searxng
       - ollama
+    networks:
+      - ai-frontend # Para receber tráfego do Nginx
+      - ai-backend  # Para conversar com o Ollama e SearXNG
 
 volumes:
   searxng-cache:
   open-webui:
-  ollama-data: # New volume to persist the Ollama models.
+  ollama-data:
+
+# Definição e criação das redes isoladas
+networks:
+  ai-frontend:
+    driver: bridge
+  ai-backend:
+    driver: bridge
+    internal: true # Bloqueia qualquer tráfego de saída/entrada externo para esta rede
