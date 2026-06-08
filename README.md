@@ -10,7 +10,15 @@ O resultado é esse stack aqui: uma IA pessoal, rodando no meu próprio servidor
 
 ## Como funciona
 
-Nada fica exposto diretamente na internet — tudo passa pelo Nginx.
+Como funciona
+
+1. O usuário envia uma pergunta pela interface web.
+2. O Nginx recebe a requisição e atua como proxy reverso.
+3. A interface Open WebUI encaminha a pergunta para o Ollama.
+4. O Ollama processa a requisição utilizando o modelo local.
+5. A resposta retorna pela mesma rota até o navegador.
+
+Todos os serviços são executados em containers Docker e se comunicam por uma rede interna, sem expor diretamente os componentes ao público.
 
 ---
 
