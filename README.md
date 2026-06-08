@@ -19,7 +19,7 @@ O resultado é esse stack aqui: IA totalmente self-hosted, executada em uma VPS 
 
 ## Arquitetura
 
-![Arquitetura do Sistema](arquitetura.png)
+<img width="120" height="439" alt="Diagrama sem nome drawio" src="https://github.com/user-attachments/assets/70eef765-8f31-48c3-a6a0-0a887b2b5d7e" />
 
 ---
 
@@ -85,7 +85,6 @@ docker exec -it ollama ollama pull llama3.2
 ```
 
 ### 5. Acessa no navegador
-
                                   
 ---
 
