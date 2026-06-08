@@ -18,7 +18,6 @@ services:
     image: searxng/searxng
     container_name: searxng
     restart: unless-stopped
-    # Pode remover a porta 8080 exposta para a internet se o Nginx for o proxy interno
     expose:
       - "8080"
     volumes:
