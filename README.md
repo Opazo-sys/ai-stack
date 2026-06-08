@@ -1,29 +1,98 @@
-# 🤖 Self-Hosted AI Stack
+# 🤖 AI Stack — Self-Hosted AI on VPS
 
-Assistente de I.A Privada.
+Esse projeto nasceu de uma ideia simples: por que pagar por uma IA quando dá pra hospedar a sua própria?
 
-## Stack
-- **Ollama** — LLM runtime (installed on host)
-- **Open WebUI** — Chat interface (Docker, port ****)
-- **SearXNG** — Private web search (Docker, port ****)
+Sou o Opazo, estou iniciando minha carreira em infra/sysadmin e resolvi usar esse projeto pra me aprofundar em tecnologias que já uso no dia a dia — Docker, Linux, VPS — mas de um jeito que fizesse sentido pra mim. Vi outras pessoas fazendo isso, me interessei de verdade, e fui atrás.
 
-## Setup
+O resultado é esse stack aqui: uma IA pessoal, rodando no meu próprio servidor, sem depender de API de ninguém.
 
-### 1. Install Ollama
+---
+
+## 🧱 Como funciona
+
+Nada fica exposto diretamente na internet — tudo passa pelo Nginx.
+*(Aprendi isso na marra. Não faça como eu fiz antes.)*
+
+---
+
+## 🛠️ O que tem aqui
+
+| Serviço      | Imagem                              | Pra que serve                         |
+|--------------|-------------------------------------|---------------------------------------|
+| Ollama       | `ollama/ollama`                     | Roda o modelo de IA localmente        |
+| Open WebUI   | `ghcr.io/open-webui/open-webui`     | Interface de chat no navegador        |
+| SearXNG      | `searxng/searxng`                   | Busca web sem rastreamento            |
+| Nginx        | `nginx:alpine`                      | Reverse proxy + HTTPS                 |
+
+---
+
+## ✅ O que você precisa
+
+- VPS com pelo menos **2 vCPU / 4GB RAM** (recomendo 8GB)
+- Ubuntu 22.04 ou 24.04
+- Um domínio apontando pro IP da VPS
+- Docker instalado (o `setup.sh` instala pra você se não tiver)
+
+---
+
+## 🚀 Como rodar
+
+### 1. Clone o repositório
+
 ```bash
-curl -fsSL https://ollama.com/install.sh | sh
+git clone https://github.com/Opazo-sys/ai-stack.git
+cd ai-stack
 ```
 
-### 2. Pull a model
+### 2. Configure o ambiente
+
 ```bash
-ollama pull llama3
+cp .env.example .env
+nano .env
 ```
 
-### 3. Start containers
+### 3. Roda o script de setup
+
 ```bash
+chmod +x setup.sh
+sudo ./setup.sh
+```
+
+### 4. Puxa um modelo de IA
+
+```bash
+docker exec -it ollama ollama pull llama3.2
+```
+
+### 5. Acessa no navegador
+
+                                  
+---
+
+## 📁 Estrutura do projeto
+
+---
+
+## 🔒 Segurança
+
+- HTTP redireciona automaticamente para HTTPS
+- Nenhuma porta dos serviços fica exposta diretamente
+- Telemetria do SearXNG desativada
+- Analytics do Open WebUI desativados
+
+*(Sim, eu aprendi que deixar porta 3000 aberta pra internet é uma péssima ideia.)*
+
+---
+
+## 📦 Atualizando
+
+```bash
+docker compose pull
 docker compose up -d
 ```
 
-## Access
-- Open WebUI: `http://YOUR_VPS_IP:****`
-- SearXNG: `http://YOUR_VPS_IP:****`
+---
+
+## 📄 Licença
+
+MIT — faz o que quiser, só não me culpa se quebrar algo em produção.
