@@ -1,16 +1,49 @@
 # 🤖 AI Stack — Self-Hosted AI on VPS
 
+![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white)
+![Ubuntu](https://img.shields.io/badge/Ubuntu-24.04-E95420?logo=ubuntu&logoColor=white)
+![Nginx](https://img.shields.io/badge/Nginx-009639?logo=nginx&logoColor=white)
+![Ollama](https://img.shields.io/badge/Ollama-Local_AI-black)
+![Open WebUI](https://img.shields.io/badge/Open_WebUI-Self_Hosted-blue)
+![MIT](https://img.shields.io/badge/License-MIT-green)
+
 Esse projeto nasceu de uma ideia simples: por que pagar por uma IA quando dá pra hospedar a sua própria?
 
-Sou o Opazo, estou iniciando minha carreira em infra/sysadmin e resolvi usar esse projeto pra me aprofundar em tecnologias que já uso no dia a dia como Docker, Linux, VPS... Vi outras pessoas fazendo isso, me interessei e fui atrás.
+Este projeto foi desenvolvido como laboratório pessoal para aprofundar conhecimentos em infraestrutura, containers e hospedagem de aplicações self-hosted.
+
+O objetivo foi construir uma stack de IA totalmente executada em uma VPS própria, utilizando Docker, Nginx, Open WebUI e Ollama.
 
 O resultado é esse stack aqui: IA totalmente self-hosted, executada em uma VPS própria e sem dependência de APIs externas.
 
 ---
 
-## Como funciona
+## Arquitetura
 
-Como funciona
+Internet
+    │
+    ▼
++-------+
+| Nginx |
++-------+
+    │
+    ▼
++------------+
+| Open WebUI |
++------------+
+    │
+    ▼
++--------+
+| Ollama |
++--------+
+    │
+    ▼
++---------+
+| Llama3.2|
++---------+
+
+---
+
+## Como funciona
 
 1. O usuário envia uma pergunta pela interface web.
 2. O Nginx recebe a requisição e atua como proxy reverso.
@@ -78,6 +111,16 @@ docker exec -it ollama ollama pull llama3.2
 
 ## Estrutura do projeto
 
+ai-stack/
+├── docker-compose.yml
+├── .env.example
+├── setup.sh
+├── nginx/
+│   └── default.conf
+├── open-webui/
+├── searxng/
+└── README.md
+
 ---
 
 ## Segurança
@@ -95,6 +138,17 @@ docker exec -it ollama ollama pull llama3.2
 docker compose pull
 docker compose up -d
 ```
+
+---
+
+## O que aprendi
+
+- Deploy de aplicações em VPS Linux
+- Proxy reverso com Nginx
+- Docker Compose
+- Persistência de volumes
+- Comunicação entre containers
+- Configuração de HTTPS
 
 ---
 
