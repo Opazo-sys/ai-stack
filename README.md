@@ -2,20 +2,19 @@
 
 Esse projeto nasceu de uma ideia simples: por que pagar por uma IA quando dá pra hospedar a sua própria?
 
-Sou o Opazo, estou iniciando minha carreira em infra/sysadmin e resolvi usar esse projeto pra me aprofundar em tecnologias que já uso no dia a dia — Docker, Linux, VPS — mas de um jeito que fizesse sentido pra mim. Vi outras pessoas fazendo isso, me interessei de verdade, e fui atrás.
+Sou o Opazo, estou iniciando minha carreira em infra/sysadmin e resolvi usar esse projeto pra me aprofundar em tecnologias que já uso no dia a dia como Docker, Linux, VPS... Vi outras pessoas fazendo isso, me interessei e fui atrás.
 
 O resultado é esse stack aqui: uma IA pessoal, rodando no meu próprio servidor, sem depender de API de ninguém.
 
 ---
 
-## 🧱 Como funciona
+## Como funciona
 
 Nada fica exposto diretamente na internet — tudo passa pelo Nginx.
-*(Aprendi isso na marra. Não faça como eu fiz antes.)*
 
 ---
 
-## 🛠️ O que tem aqui
+## O que tem aqui
 
 | Serviço      | Imagem                              | Pra que serve                         |
 |--------------|-------------------------------------|---------------------------------------|
@@ -26,7 +25,7 @@ Nada fica exposto diretamente na internet — tudo passa pelo Nginx.
 
 ---
 
-## ✅ O que você precisa
+## O que você precisa
 
 - VPS com pelo menos **2 vCPU / 4GB RAM** (recomendo 8GB)
 - Ubuntu 22.04 ou 24.04
@@ -35,7 +34,7 @@ Nada fica exposto diretamente na internet — tudo passa pelo Nginx.
 
 ---
 
-## 🚀 Como rodar
+## Como rodar
 
 ### 1. Clone o repositório
 
@@ -69,11 +68,11 @@ docker exec -it ollama ollama pull llama3.2
                                   
 ---
 
-## 📁 Estrutura do projeto
+## Estrutura do projeto
 
 ---
 
-## 🔒 Segurança
+## Segurança
 
 - HTTP redireciona automaticamente para HTTPS
 - Nenhuma porta dos serviços fica exposta diretamente
@@ -84,7 +83,7 @@ docker exec -it ollama ollama pull llama3.2
 
 ---
 
-## 📦 Atualizando
+## Atualizando
 
 ```bash
 docker compose pull
@@ -93,6 +92,6 @@ docker compose up -d
 
 ---
 
-## 📄 Licença
+## Licença
 
 MIT — faz o que quiser, só não me culpa se quebrar algo em produção.
