@@ -79,8 +79,6 @@ docker exec -it ollama ollama pull llama3.2
 - Telemetria do SearXNG desativada
 - Analytics do Open WebUI desativados
 
-*(Sim, eu aprendi que deixar porta 3000 aberta pra internet é uma péssima ideia.)*
-
 ---
 
 ## Atualizando
