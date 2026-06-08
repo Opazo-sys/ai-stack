@@ -19,35 +19,7 @@ O resultado é esse stack aqui: IA totalmente self-hosted, executada em uma VPS 
 
 ## Arquitetura
 
-```text
-              +---------+
-              | SearXNG |
-              +---------+
-                    ▲
-                    │
-
-Internet
-    │
-    ▼
-+-------+
-| Nginx |
-+-------+
-    │
-    ▼
-+------------+
-| Open WebUI |
-+------------+
-    │
-    ▼
-+--------+
-| Ollama |
-+--------+
-    │
-    ▼
-+----------+
-| Llama3.2 |
-+----------+
-```
+![Arquitetura do Sistema](arquitetura.png)
 
 ---
 
