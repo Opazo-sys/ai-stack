@@ -19,6 +19,13 @@ O resultado é esse stack aqui: IA totalmente self-hosted, executada em uma VPS 
 
 ## Arquitetura
 
+```text
+              +---------+
+              | SearXNG |
+              +---------+
+                    ▲
+                    │
+
 Internet
     │
     ▼
@@ -37,9 +44,10 @@ Internet
 +--------+
     │
     ▼
-+---------+
-| Llama3.2|
-+---------+
++----------+
+| Llama3.2 |
++----------+
+```
 
 ---
 
